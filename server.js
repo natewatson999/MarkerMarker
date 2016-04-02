@@ -116,15 +116,12 @@ var server = https.createServer(config, function (req, res) {
 		page = req.url;
 	}
 	switch (page){
-		case "report":
+		case "/report":
 			var params = url.parse(req.url, true);
 			if ((params.action != null) && (params.building != null) && (params.room != null)) {
 				report(params.action, params, building, params.room);
 			}
 			res.write(ReceivedPageContent);
-			res.end();
-			break;
-		case "favicon.ico":
 			res.end();
 			break;
 		default:
