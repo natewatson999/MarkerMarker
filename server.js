@@ -26,6 +26,16 @@ var report = function(action, building, room) {
 		case "needGreen":
 			break;
 		case "needEraser":
+			connection.query("SELECT * FROM `demands` WHERE (`building`='" + building + "' & `room`='" + room + "' & 'demand' ='eraser');", function(err, rows){
+				if (err) {
+					console.dir(err);
+					return;
+				}
+				if (rows.length == 0) {
+					connection.query("INSERT INTO `demands` VALUES (0, '" + building + "', " + room + ", 'eraser');");
+					return;
+				}
+			});
 			break;
 		case "haveBlack":
 			connection.query("DELETE FROM `demands` WHERE (`building`='" + building + "' & `room`='" + room + "' & 'demand' ='black');", function(err, rows){
