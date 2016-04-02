@@ -16,7 +16,7 @@ var connection = mysql.createConnection({
 });
 connection.connect();
 var report = function(action, building, room) {
-	switch (){
+	switch (action){
 		case "needBlack":
 			break;
 		case "needBlue":
@@ -60,15 +60,15 @@ var server = https.createServer(config, function (req, res) {
 		return;
 	}
 	var page = "";
-	if (req.url.indexof("?") > -1) {
-		page = req.url.substring(0, req.url.indexof("?")); 
+	if (req.url.indexOf("?") > -1) {
+		page = req.url.substring(0, req.url.indexOf("?")); 
 	} else {
 		page = req.url;
 	}
 	switch (page){
 		case "report":
 			var params = url.parse(req.url, true);
-			if ((params.action != null) &&params.building != null) && (params.room != null)) {
+			if ((params.action != null) && (params.building != null) && (params.room != null)) {
 				report(params.action, params, building, params.room);
 			}
 			res.write(ReceivedPageContent);
