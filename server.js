@@ -117,9 +117,33 @@ var server = https.createServer(config, function (req, res) {
 	}
 	switch (page){
 		case "/report":
-			var params = url.parse(req.url, true);
+			var params = (url.parse(req.url, true)).query;
+			if ( params.action == null) {
+				if (params.need != null) {
+					switch(params.need) {
+						case "black":
+							params.action = "needBlack";
+							break;
+						case "green":
+							params.action = "needGreen";
+							break;
+						case "red":
+							params.action = "needRed";
+							break;
+						case "blue":
+							params.action = "needBlue";
+							break;
+						case "eraser":
+							params.action = "needEraser";
+							break;
+					}
+				} else {
+				}
+			}
+			console.dir(params);
 			if ((params.action != null) && (params.building != null) && (params.room != null)) {
-				report(params.action, params, building, params.room);
+				console.log("reached");
+				report(params.action, params.building, params.room);
 			}
 			res.write(ReceivedPageContent);
 			res.end();
