@@ -8,7 +8,48 @@ var config = {
 };
 var MainPageContent = fs.readFileSync("./client.html");
 var ReceivedPageContent = fs.readFileSync("./received.html");
+var connection = mysql.createConnection({
+	host: "localhost",
+	user: "root",
+	password: "@m@21n66r@c3H0993r",
+	database: "MarkerMarker"
+});
+connection.connect();
 var report = function(action, building, room) {
+	switch (){
+		case "needBlack":
+			break;
+		case "needBlue":
+			break;
+		case "needRed":
+			break;
+		case "needGreen":
+			break;
+		case "needEraser":
+			break;
+		case "haveBlack":
+			connection.query("DELETE FROM `demands` WHERE (`building`='" + building + "' & `room`='" + room + "' & 'demand' ='black');", function(err, rows){
+			});
+			break;
+		case "haveBlue":
+			connection.query("DELETE FROM `demands` WHERE (`building`='" + building + "' & `room`='" + room + "' & 'demand' ='blue');", function(err, rows){
+			});
+			break;
+		case "haveRed":
+			connection.query("DELETE FROM `demands` WHERE (`building`='" + building + "' & `room`='" + room + "' & 'demand' ='red');", function(err, rows){
+			});
+			break;
+		case "haveGreen":
+			connection.query("DELETE FROM `demands` WHERE (`building`='" + building + "' & `room`='" + room + "' & 'demand' ='green');", function(err, rows){
+			});
+			break;
+		case "haveEraser":
+			connection.query("DELETE FROM `demands` WHERE (`building`='" + building + "' & `room`='" + room + "' & 'demand' ='eraser');", function(err, rows){
+			});
+			break;
+		default:
+			break;
+	}
 	return;
 };
 var server = https.createServer(config, function (req, res) {
