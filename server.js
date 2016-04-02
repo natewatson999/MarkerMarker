@@ -6,7 +6,7 @@ var config = {
    key: fs.readFileSync('private.pem'),
    cert: fs.readFileSync('csr.pem')
 };
-var MainPageContent = fs.readFileSync("./client.html");
+var MainPageContent = fs.readFileSync("./index.html");
 var ReceivedPageContent = fs.readFileSync("./received.html");
 var connection = mysql.createConnection({
 	host: "localhost",
@@ -128,7 +128,7 @@ var server = https.createServer(config, function (req, res) {
 			res.end();
 			break;
 		default:
-			res.write(req.url);
+			res.write(fs.readFileSync("./" + page));
 			res.end();
 			break;
 	}
