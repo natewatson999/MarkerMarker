@@ -5,11 +5,10 @@
         <title>MarkerMarker</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
         <link rel="stylesheet" href="css/bootstrap.min.css">
         <link rel="stylesheet" href="css/main.css">
-        <script src="js/vendor/modernizr-2.8.3.min.js"></script>
     </head>
+
     <body>
     <form action="/report">
     <div class="jumbotron">
@@ -28,18 +27,21 @@
                         <label class="label-black">
                         <input type="radio" name="need" value="black" checked>
                         Black</label>
+                        <label class="label-red">
+                        <input type="radio" name="need" value="red">
+                        Red</label>
                         <label class="label-green">
                         <input type="radio" name="need" value="green">
                         Green</label>
                         <label class="label-blue">
                         <input type="radio" name="need" value="blue">
                         Blue</label>
-                        <label class="label-red">
-                        <input type="radio" name="need" value="red">
-                        Red</label>
                         <label class="label-eraser">
                         <input type="radio" name="need" value="eraser">
                         Eraser</label>
+                        <label class="label-none">
+                        <input type="radio" name="need" value="none">
+                        None</label>
                     </div>
                 </div>
 
@@ -47,30 +49,32 @@
                     <span class="input-group-addon">Have</span>
                     <div class="radio-group">
                         <label class="label-black">
-                            <input type="radio" name="have" value="black" checked>
-                            Black</label>
-                        <label class="label-green">
-                            <input type="radio" name="have" value="green">
-                            Green</label>
-                        <label class="label-blue">
-                            <input type="radio" name="have" value="blue">
-                            Blue</label>
+                        <input type="radio" name="have" value="black" checked>
+                        Black</label>
                         <label class="label-red">
-                            <input type="radio" name="have" value="red">
-                            Red</label>
+                        <input type="radio" name="have" value="red">
+                        Red</label>
+                        <label class="label-green">
+                        <input type="radio" name="have" value="green">
+                        Green</label>
+                        <label class="label-blue">
+                        <input type="radio" name="have" value="blue">
+                        Blue</label>
                         <label class="label-eraser">
-                            <input type="radio" name="have" value="eraser">
-                            Eraser</label>
+                        <input type="radio" name="have" value="eraser">
+                        Eraser</label>
+                        <label class="label-none">
+                        <input type="radio" name="have" value="none">
+                        None</label>
                     </div>
-                </div>
 
+                </div>
             <button class="btn btn-primary btn-lg" type="submit" role="button" id="submit-button" onsubmit="formSubmission()">Submit</button>
             </div>
         </div>
     </div>
     </form>
-
     <script src="js/vendor/jquery-1.11.2.min.js"></script>
-    <script src="js/main.js"></script>
+    <script src="js/vendor/bootstrap.min.js"></script>
     </body>
 </html>
