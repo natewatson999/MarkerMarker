@@ -116,6 +116,22 @@ var server = https.createServer(config, function (req, res) {
 		page = req.url;
 	}
 	switch (page){
+		case "/list":
+			connection.query("SELECT * FROM `demands`;", function(err, rows){
+				if (err) {
+					res.end();
+					console.log(err);
+					return;
+				}
+				var result = "<!doctype html> <html><head><title>Markers Needed</title><style> table, th, td {border: 1px solid black;} th {font-weight: 900;}</style></head><body><table><tr><th>ID </th><th>Building </th><th>Room </th><th>Demand </th></tr>";
+				for (var index = 0; index < rows.length; index++) {
+					result = result + "<tr><td>" + rows[index].id + "</td> <td>" + rows[index].building + "</td> <td>" + rows[index].room + "</td> <td>" + rows[index].demand + "</td> </tr>" ;
+				}
+				result = result + "</table></body></html>";
+				res.write(result);
+				res.end();
+			});
+			break;
 		case "/report":
 			var params = (url.parse(req.url, true)).query;
 			if ( params.action == null) {
