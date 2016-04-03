@@ -1,5 +1,5 @@
 body {
-    margin-top: 14vh;
+    margin-top: 12vh;
 }
 
 img {
@@ -33,6 +33,9 @@ input {
 }
 
 .jumbotron {
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
     background-color: transparent;
     text-align: center;
 }
