@@ -154,6 +154,25 @@ var server = https.createServer(config, function (req, res) {
 							break;
 					}
 				} else {
+					if (params.have != null) {
+						switch(params.have) {
+							case "black":
+								params.action = "haveBlack";
+								break;
+							case "green":
+								params.action = "haveGreen";
+								break;
+							case "red":
+								params.action = "haveRed";
+								break;
+							case "blue":
+								params.action = "haveBlue";
+								break;
+							case "eraser":
+								params.action = "haveEraser";
+								break;
+						}
+					}
 				}
 			}
 			console.dir(params);
