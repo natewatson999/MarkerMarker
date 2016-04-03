@@ -118,7 +118,7 @@ var server = https.createServer(config, function (req, res) {
 					console.log(err);
 					return;
 				}
-				var result = '<!doctype html><html><head><title>Markers Needed</title><meta name="viewport" content="width=device-width, initial-scale=1"> <link rel="stylesheet" href="../css/bootstrap.min.css"><style>body {max-width: 600px;margin-left: auto;margin-right: auto;}</style></head><body><nav class="navbar navbar-default"> <div class="container-fluid"> <div class="navbar-header"> <a href="/"> < Back </a> </div> </div> </nav><table class="table"><thead class="thead-inverse"><tr><th>ID</th><th>Building</th><th>Room</th><th>Demand</th></tr></thead><tbody>';
+				var result = '<!doctype html><html><head><title>Markers Needed</title><meta name="viewport" content="width=device-width, initial-scale=1"> <link rel="stylesheet" href="../css/bootstrap.min.css"><style>body {max-width: 600px;margin-left: auto;margin-right: auto;}</style></head><body><nav class="navbar navbar-default"> <div class="container-fluid"> <div class="navbar-header"> <a href="/"> &lt; Back </a> </div> </div> </nav><table class="table"><thead class="thead-inverse"><tr><th>ID</th><th>Building</th><th>Room</th><th>Demand</th></tr></thead><tbody>';
 				for (var index = 0; index < rows.length; index++) {
 					result = result + '<tr><td>' + rows[index].id + '</td> <td>' + rows[index].building + '</td> <td>' + rows[index].room + '</td> <td>' + rows[index].demand + '</td> </tr>';
 				}
