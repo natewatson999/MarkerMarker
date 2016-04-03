@@ -185,7 +185,27 @@ var server = https.createServer(config, function (req, res) {
 			res.end();
 			break;
 		default:
-			res.write(fs.readFileSync("./" + page));
+			var securePage = page;/*
+			while (securePage.indexOf(".." >- 1)){
+				securePage = securePage.replace("..",'.');
+			}
+			while (securePage.indexOf("./" >- 1)){
+				securePage = securePage.replace("./",'');
+			}
+			
+			switch(securePage) {
+				case "/server.js":
+				case "/.gitignore":
+				case "/cert.pem":
+				case "/csr.pem":
+				case "/DBGS.sql":
+				case "/private.pem":					
+					res.end();
+					return;
+				default:
+					break;
+			}*/
+			res.write(fs.readFileSync("./" + securePage));
 			res.end();
 			break;
 	}
