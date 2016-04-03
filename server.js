@@ -18,55 +18,55 @@ connection.connect();
 var report = function(action, building, room) {
 	switch (action){
 		case "needBlack":
-			connection.query("SELECT * FROM `demands` WHERE (`building`='" + building + "' & `room`='" + room + "' & 'demand' ='black');", function(err, rows){
+			connection.query("SELECT * FROM `demands` WHERE (`building`='" + building + "' AND `room`='" + room + "' AND `demand` ='black');", function(err, rows){
 				if (err) {
 					console.dir(err);
 					return;
 				}
 				if (rows.length == 0) {
-					connection.query("INSERT INTO `demands` VALUES (0, '" + building + "', " + room + ", 'eraser');");
+					connection.query("INSERT INTO `demands` VALUES (0, '" + building + "', " + room + ", 'black');");
 					return;
 				}
 			});
 			break;
 		case "needBlue":
-			connection.query("SELECT * FROM `demands` WHERE (`building`='" + building + "' & `room`='" + room + "' & 'demand' ='blue');", function(err, rows){
+			connection.query("SELECT * FROM `demands` WHERE (`building`='" + building + "' AND `room`='" + room + "' AND `demand` ='blue');", function(err, rows){
 				if (err) {
 					console.dir(err);
 					return;
 				}
 				if (rows.length == 0) {
-					connection.query("INSERT INTO `demands` VALUES (0, '" + building + "', " + room + ", 'eraser');");
+					connection.query("INSERT INTO `demands` VALUES (0, '" + building + "', " + room + ", 'blue');");
 					return;
 				}
 			});
 			break;
 		case "needRed":
-			connection.query("SELECT * FROM `demands` WHERE (`building`='" + building + "' & `room`='" + room + "' & 'demand' ='red');", function(err, rows){
+			connection.query("SELECT * FROM `demands` WHERE (`building`='" + building + "' AND `room`='" + room + "' AND `demand` ='red');", function(err, rows){
 				if (err) {
 					console.dir(err);
 					return;
 				}
 				if (rows.length == 0) {
-					connection.query("INSERT INTO `demands` VALUES (0, '" + building + "', " + room + ", 'eraser');");
+					connection.query("INSERT INTO `demands` VALUES (0, '" + building + "', " + room + ", 'red');");
 					return;
 				}
 			});
 			break;
 		case "needGreen":
-			connection.query("SELECT * FROM `demands` WHERE (`building`='" + building + "' & `room`='" + room + "' & 'demand' ='green');", function(err, rows){
+			connection.query("SELECT * FROM `demands` WHERE (`building`='" + building + "' AND `room`='" + room + "' AND `demand` ='green');", function(err, rows){
 				if (err) {
 					console.dir(err);
 					return;
 				}
 				if (rows.length == 0) {
-					connection.query("INSERT INTO `demands` VALUES (0, '" + building + "', " + room + ", 'eraser');");
+					connection.query("INSERT INTO `demands` VALUES (0, '" + building + "', " + room + ", 'green');");
 					return;
 				}
 			});
 			break;
 		case "needEraser":
-			connection.query("SELECT * FROM `demands` WHERE (`building`='" + building + "' & `room`='" + room + "' & 'demand' ='eraser');", function(err, rows){
+			connection.query("SELECT * FROM `demands` WHERE (`building`='" + building + "' AND `room`='" + room + "' AND `demand` ='eraser');", function(err, rows){
 				if (err) {
 					console.dir(err);
 					return;
@@ -78,24 +78,19 @@ var report = function(action, building, room) {
 			});
 			break;
 		case "haveBlack":
-			connection.query("DELETE FROM `demands` WHERE (`building`='" + building + "' & `room`='" + room + "' & 'demand' ='black');", function(err, rows){
-			});
+			connection.query("DELETE FROM `demands` WHERE `building`='" + building + "' AND `room`='" + room + "' AND `demand` ='black' ;", function(err, rows){});
 			break;
 		case "haveBlue":
-			connection.query("DELETE FROM `demands` WHERE (`building`='" + building + "' & `room`='" + room + "' & 'demand' ='blue');", function(err, rows){
-			});
+			connection.query("DELETE FROM `demands` WHERE `building`='" + building + "' AND `room`='" + room + "' AND `demand` ='blue' ;", function(err, rows){});
 			break;
 		case "haveRed":
-			connection.query("DELETE FROM `demands` WHERE (`building`='" + building + "' & `room`='" + room + "' & 'demand' ='red');", function(err, rows){
-			});
+			connection.query("DELETE FROM `demands` WHERE `building`='" + building + "' AND `room`='" + room + "' AND `demand` ='red' ;", function(err, rows){});
 			break;
 		case "haveGreen":
-			connection.query("DELETE FROM `demands` WHERE (`building`='" + building + "' & `room`='" + room + "' & 'demand' ='green');", function(err, rows){
-			});
+			connection.query("DELETE FROM `demands` WHERE `building`='" + building + "' AND `room`='" + room + "' AND `demand` ='green' ;", function(err, rows){});
 			break;
 		case "haveEraser":
-			connection.query("DELETE FROM `demands` WHERE (`building`='" + building + "' & `room`='" + room + "' & 'demand' ='eraser');", function(err, rows){
-			});
+			connection.query("DELETE FROM `demands` WHERE `building`='" + building + "' AND `room`='" + room + "' AND `demand` ='eraser' ;", function(err, rows){});
 			break;
 		default:
 			break;
@@ -152,8 +147,11 @@ var server = https.createServer(config, function (req, res) {
 						case "eraser":
 							params.action = "needEraser";
 							break;
+						case "none":
+						default:
+							break;
 					}
-				} else {
+				} if ((params.need == "none") || (params.need == null)) {
 					if (params.have != null) {
 						switch(params.have) {
 							case "black":
@@ -170,6 +168,9 @@ var server = https.createServer(config, function (req, res) {
 								break;
 							case "eraser":
 								params.action = "haveEraser";
+								break;
+							case "none":
+							default:
 								break;
 						}
 					}
