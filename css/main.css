@@ -1,12 +1,14 @@
 body {
-    margin-top: 15vh;
+    margin-top: 14vh;
 }
 
 img {
     max-width: 100%;
     padding-top: 30px;
-    padding-bottom: 30px;
+    padding-bottom: 40px;
     position: relative;
+    margin-left: auto;
+    margin-right: auto;
     display: block;
 }
 
@@ -46,7 +48,7 @@ label {
 }
 
 #submit-button {
-    margin-top: 30px;
+    margin-top: 20px;
 }
 
 .label-blue {
@@ -61,6 +63,10 @@ label {
     color: #d43f3a;
 }
 
-.label-eraser {
+.label-none {
     color: #9d9d9d;
+}
+
+.label-eraser {
+    color: #5e5e5e;
 }
