@@ -7,31 +7,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <link rel="stylesheet" href="css/bootstrap.min.css">
-        <style>
-            body {
-                padding-top: 20px;
-                padding-bottom: 20px;
-            }
-            img {
-                padding-top: 30px;
-                padding-bottom: 30px;
-                position: relative;
-                display: block;
-            }
-            @media (min-width: 768px) {
-                .container {
-                    max-width: 730px;
-                }
-            }
-            .jumbotron {
-                text-align: center;
-                border-bottom: 1px solid #e5e5e5;
-            }
-            .jumbotron .btn {
-                padding: 14px 24px;
-                font-size: 21px;
-            }
-        </style>
+        <link rel="stylesheet" href="css/main.css">
         <script src="js/vendor/modernizr-2.8.3.min.js"></script>
     </head>
     <body>
@@ -47,13 +23,14 @@
                 </div>
 
                 <div class="input-group">
-                    <div class="radio">
-                        <label>
-                        <input type="checkbox" name="need" id="green" value="option2">
-                        Green</label>
+                    <span class="input-group-addon">Need</span>
+                    <div class="radio-group">
                         <label>
                         <input type="checkbox" name="need" value="black" checked>
                         Black</label>
+                        <label>
+                        <input type="checkbox" name="need" value="green">
+                        Green</label>
                         <label>
                         <input type="checkbox" name="need" value="blue">
                         Blue</label>
@@ -63,6 +40,27 @@
                         <label>
                         <input type="checkbox" name="need" value="eraser">
                         Eraser</label>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <span class="input-group-addon">Have</span>
+                    <div class="radio-group">
+                        <label>
+                            <input type="checkbox" name="have" value="black" checked>
+                            Black</label>
+                        <label>
+                            <input type="checkbox" name="have" value="green">
+                            Green</label>
+                        <label>
+                            <input type="checkbox" name="have" value="blue">
+                            Blue</label>
+                        <label>
+                            <input type="checkbox" name="have" value="red">
+                            Red</label>
+                        <label>
+                            <input type="checkbox" name="have" value="eraser">
+                            Eraser</label>
                     </div>
                 </div>
 
