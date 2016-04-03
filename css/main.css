@@ -22,6 +22,10 @@ input {
     border: none !important;
 }
 
+#building-textfield {
+    border-bottom: 1px solid #ccc !important;
+}
+
 .input-group {
     margin-bottom: 10px;
     border: 1px solid #ccc;
@@ -29,7 +33,10 @@ input {
 }
 
 .input-group-addon {
-    border: none;
+    border-left: none;
+    border-top: none;
+    border-bottom: none;
+    border-right: 1px solid #ccc;
 }
 
 .jumbotron {
@@ -47,10 +54,11 @@ input {
 
 label {
     margin-bottom: 0;
-    margin-top: 4px;
+    margin-top: 2px;
+    font-weight: 700;
 }
 
-#submit-button {
+.btn {
     margin-top: 20px;
 }
 
